@@ -15,7 +15,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var stringData;
   Map? mapResponse;
   Map? mapJsonData;
   List? listResponse;
@@ -48,6 +47,67 @@ class _MyAppState extends State<MyApp> {
           appBar: AppBar(
             title: Text('List View map'),
           ),
+          drawer: Drawer(
+            backgroundColor: Colors.green[100],
+            elevation: 6.0,
+            child: ListView(
+              children: [
+                DrawerHeader(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.bottomLeft,
+                        end: Alignment.topRight,
+                        colors: [
+                          Colors.greenAccent,
+                          Colors.lightGreen,
+                        ]),
+                  ),
+                  child: Text('Drawer Header'),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.person,
+                    size: 40,
+                    color: Colors.lightGreen,
+                  ),
+                  title: Text('person'),
+                  onTap: () {},
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.person,
+                    color: Colors.lightGreen,
+                  ),
+                  title: Text('person'),
+                  onTap: () {},
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.login,
+                    color: Colors.lightGreen,
+                  ),
+                  title: Text('person'),
+                  onTap: () {},
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.logout,
+                    color: Colors.lightGreen,
+                  ),
+                  title: Text('person'),
+                  onTap: () {},
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.settings,
+                    color: Colors.lightGreen,
+                  ),
+                  title: Text('person'),
+                  onTap: () {},
+                ),
+              ],
+            ),
+          ),
           backgroundColor: Colors.green[50],
           body: ListView.builder(
               itemCount: listResponse?.length,
@@ -57,7 +117,14 @@ class _MyAppState extends State<MyApp> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Image.network(listResponse?[index]['avatar']),
+                        child: Container(
+                          child: Image.network(
+                            listResponse?[index]['avatar'],
+                            height: 300,
+                            width: 300,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                       Text(listResponse![index]['id'].toString()),
                       Text(listResponse?[index]['first_name']),
